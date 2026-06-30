@@ -216,6 +216,16 @@ input[type=radio],input[type=checkbox]{width:18px;height:18px;accent-color:#2c4a
       <label><input type="radio" name="ai_who" value="職場のスタッフ">職場のスタッフ</label>
     </div>
   </div>
+
+  <div class="field">
+    <label>元になる資料・データはありますか？</label>
+    <div class="hint">※ AIに「ゼロから作ってもらう」のか、「すでにある資料を整理・要約してもらう」のかで、おすすめのAIが変わります</div>
+    <div class="choices">
+      <label><input type="radio" name="ai_material" value="ある（マニュアル・過去資料・議事録など、まとまった資料がたくさんある）">ある（マニュアル・過去資料・議事録など、まとまった資料がたくさんある）</label>
+      <label><input type="radio" name="ai_material" value="少しある／これから集める">少しある／これから集める</label>
+      <label><input type="radio" name="ai_material" value="ない（ゼロから作りたい）">ない（ゼロから作りたい）</label>
+    </div>
+  </div>
 </div>
 
 <!-- 希望・その他 -->
@@ -289,6 +299,7 @@ AI経験：${r('ai_exp')}
 ${v('ai_pain')}
 AIで楽にしたいこと：${c('ai_want')}
 使う人：${r('ai_who')}
+元になる資料・データ：${r('ai_material')}
 
 ━━━━━━━━━━━━━━
 
