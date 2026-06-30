@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>あいまに ヒアリングシート（総合相談・デジタル/AI）</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif;background:#f0f4ff;color:#333;padding:16px;max-width:600px;margin:0 auto}
+.header{background:linear-gradient(135deg,#2c4a7c,#6c8ebf);border-radius:14px;padding:22px 20px;color:white;margin-bottom:18px}
+.header h1{font-size:20px;font-weight:bold;line-height:1.4}
+.header p{font-size:13px;opacity:.9;margin-top:8px;line-height:1.6}
+.section{background:white;border-radius:12px;padding:20px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.sec-title{font-size:15px;font-weight:bold;color:#2c4a7c;margin-bottom:6px;padding-bottom:8px;border-bottom:2px solid #e8eef7}
+.sec-note{font-size:12px;color:#888;margin-bottom:16px;line-height:1.5}
+.field{margin-bottom:20px}
+.field:last-child{margin-bottom:0}
+.field>label{display:block;font-size:14px;font-weight:bold;margin-bottom:8px;line-height:1.5}
+.req{color:#e74c3c;margin-left:3px}
+input[type=text],input[type=number],textarea,select{width:100%;padding:10px 12px;border:1.5px solid #ddd;border-radius:8px;font-size:15px;font-family:inherit;background:#fafafa;transition:border-color .2s}
+input:focus,textarea:focus,select:focus{outline:none;border-color:#2c4a7c;background:white}
+textarea{resize:vertical;min-height:80px;line-height:1.6}
+.choices{display:flex;flex-direction:column;gap:8px}
+.choices label{display:flex;align-items:center;gap:10px;font-weight:normal;font-size:15px;cursor:pointer;padding:11px 14px;border:1.5px solid #ddd;border-radius:8px;background:#fafafa;transition:all .15s;line-height:1.4}
+.choices label:has(input:checked){border-color:#2c4a7c;background:#e8eef7;font-weight:bold}
+input[type=radio],input[type=checkbox]{width:18px;height:18px;accent-color:#2c4a7c;flex-shrink:0}
+.hint{font-size:12px;color:#888;margin-top:6px;line-height:1.5}
+.copy-btn{display:block;width:100%;padding:16px;background:#2c4a7c;color:white;border:none;border-radius:12px;font-size:16px;font-weight:bold;cursor:pointer;margin-top:8px;text-align:center}
+.copy-btn:active{opacity:.85}
+.copied{display:none;background:#e8f5e9;border:1.5px solid #4caf50;border-radius:8px;padding:12px 16px;font-size:13px;margin-top:12px;color:#2e7d32;line-height:1.5}
+.optional-tag{font-size:11px;background:#fff3e0;color:#e65100;border-radius:4px;padding:2px 8px;font-weight:bold;margin-left:6px;vertical-align:middle}
+.spacer{height:36px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>【あいまに】ヒアリングシート<br><span style="font-size:14px;font-weight:normal;opacity:.9">総合相談（パソコン・スマホ・AI・デジタルのお困りごと）</span></h1>
+  <p>「何を頼めるかわからない」でも大丈夫。困っていることを教えてください😊<br>
+  当てはまる欄だけでOK。わからない欄は空欄のままで構いません。<br>
+  最後の「まとめてコピー」ボタンを押してLINEに貼り付けて送ってください。</p>
+</div>
+
+<!-- 基本情報 -->
+<div class="section">
+  <div class="sec-title">📋 あなたについて</div>
+  <div class="sec-note">まずは基本的なことを教えてください</div>
+
+  <div class="field">
+    <label>お名前（ニックネームでもOK）<span class="req">*</span></label>
+    <input type="text" id="name" placeholder="例：佐藤さん">
+  </div>
+
+  <div class="field">
+    <label>どんな立場ですか？<span class="req">*</span></label>
+    <div class="choices">
+      <label><input type="radio" name="role" value="個人（プライベートでの利用）">個人（プライベートでの利用）</label>
+      <label><input type="radio" name="role" value="お店・お一人で事業をしている">お店・お一人で事業をしている</label>
+      <label><input type="radio" name="role" value="会社・団体の担当者">会社・団体の担当者</label>
+      <label><input type="radio" name="role" value="家族のために相談したい">家族のために相談したい（親など）</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>お住まい・エリア</label>
+    <input type="text" id="area" placeholder="例：三重県津市、四日市市あたり">
+  </div>
+
+  <div class="field">
+    <label>連絡しやすい方法（複数選択OK）</label>
+    <div class="choices">
+      <label><input type="checkbox" name="contact" value="LINE">LINE</label>
+      <label><input type="checkbox" name="contact" value="電話">電話</label>
+      <label><input type="checkbox" name="contact" value="メール">メール</label>
+      <label><input type="checkbox" name="contact" value="InstagramのDM">InstagramのDM</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>パソコン・スマホはどのくらい得意ですか？</label>
+    <div class="choices">
+      <label><input type="radio" name="level" value="苦手・ほとんど触らない">苦手・ほとんど触らない</label>
+      <label><input type="radio" name="level" value="基本操作はできる（ネット・メールくらい）">基本操作はできる（ネット・メールくらい）</label>
+      <label><input type="radio" name="level" value="ある程度使える">ある程度使える</label>
+    </div>
+    <div class="hint">正直に教えてください。レベルに合わせてサポートします😊</div>
+  </div>
+</div>
+
+<!-- 相談したいこと（ルーター） -->
+<div class="section">
+  <div class="sec-title">💬 相談したいこと</div>
+  <div class="sec-note">当てはまるものを選んでください（複数OK）。あとの詳しい欄は、選んだものだけ答えればOKです</div>
+
+  <div class="field">
+    <label>どんなことで困っていますか？<span class="req">*</span>（複数選択OK）</label>
+    <div class="choices">
+      <label><input type="checkbox" name="topic" value="パソコンを買いたい・買い替えたい">パソコンを買いたい・買い替えたい（選び方から相談）</label>
+      <label><input type="checkbox" name="topic" value="パソコン・スマホの初期設定をしてほしい">パソコン・スマホの初期設定をしてほしい</label>
+      <label><input type="checkbox" name="topic" value="AIを仕事や生活に使えるようになりたい">AIを仕事や生活に使えるようになりたい</label>
+      <label><input type="checkbox" name="topic" value="毎日の作業を楽にしたい・自動化したい">毎日の作業を楽にしたい・自動化したい</label>
+      <label><input type="checkbox" name="topic" value="Instagramなどでお店を宣伝したい">Instagramなどでお店を宣伝したい</label>
+      <label><input type="checkbox" name="topic" value="ホームページを作りたい">ホームページ・チラシを作りたい</label>
+      <label><input type="checkbox" name="topic" value="何ができるかまず相談したい">何ができるか、まず相談したい</label>
+      <label><input type="checkbox" name="topic" value="その他">その他</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>今、一番困っていること・やりたいことを教えてください<span class="req">*</span></label>
+    <textarea id="trouble" placeholder="例：パソコンを新しく買いたいけど何を選べばいいかわからない。AIも仕事に使ってみたいけど難しそうで手が出せていない。自由に書いてください。"></textarea>
+  </div>
+</div>
+
+<!-- パソコン購入・初期設定 -->
+<div class="section">
+  <div class="sec-title">💻 パソコン購入・初期設定について<span class="optional-tag">該当する方だけ</span></div>
+  <div class="sec-note">パソコンの購入・設定を相談したい方はこちら</div>
+
+  <div class="field">
+    <label>今のパソコンの状況は？</label>
+    <div class="choices">
+      <label><input type="radio" name="pc_status" value="持っていない・初めて買う">持っていない・初めて買う</label>
+      <label><input type="radio" name="pc_status" value="古いので買い替えたい">古いので買い替えたい</label>
+      <label><input type="radio" name="pc_status" value="持っているが設定・使い方で困っている">持っているが設定・使い方で困っている</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>主に何に使いますか？（複数選択OK）</label>
+    <div class="choices">
+      <label><input type="checkbox" name="pc_use" value="ネット・メール">ネット・メール</label>
+      <label><input type="checkbox" name="pc_use" value="書類作成（Word・Excelなど）">書類作成（Word・Excelなど）</label>
+      <label><input type="checkbox" name="pc_use" value="写真・動画の管理や編集">写真・動画の管理や編集</label>
+      <label><input type="checkbox" name="pc_use" value="お店・仕事の事務作業">お店・仕事の事務作業</label>
+      <label><input type="checkbox" name="pc_use" value="AIを使ってみたい">AIを使ってみたい</label>
+      <label><input type="checkbox" name="pc_use" value="オンライン会議（Zoomなど）">オンライン会議（Zoomなど）</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>ご予算の目安</label>
+    <select id="pc_budget">
+      <option value="">選んでください</option>
+      <option value="〜7万円">〜7万円</option>
+      <option value="7〜12万円">7〜12万円</option>
+      <option value="12〜20万円">12〜20万円</option>
+      <option value="20万円以上">20万円以上</option>
+      <option value="わからない・相談したい">わからない・相談したい</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>購入のサポートはどうしてほしいですか？</label>
+    <div class="choices">
+      <label><input type="radio" name="pc_buy" value="お店に一緒に来て選んでほしい（同行）">お店に一緒に来て選んでほしい（同行）</label>
+      <label><input type="radio" name="pc_buy" value="オンラインで選定だけ手伝ってほしい">オンラインで選定だけ手伝ってほしい</label>
+      <label><input type="radio" name="pc_buy" value="自分で買うので設定だけお願いしたい">自分で買うので設定だけお願いしたい</label>
+      <label><input type="radio" name="pc_buy" value="まだ決めていない">まだ決めていない</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>初期設定でやってほしいこと（複数選択OK）</label>
+    <div class="choices">
+      <label><input type="checkbox" name="pc_setup" value="最初のセットアップ全般">最初のセットアップ全般（電源を入れてから使えるまで）</label>
+      <label><input type="checkbox" name="pc_setup" value="Wi-Fi（インターネット）接続">Wi-Fi（インターネット）接続</label>
+      <label><input type="checkbox" name="pc_setup" value="メールの設定">メールの設定</label>
+      <label><input type="checkbox" name="pc_setup" value="Word・Excelなどの初期設定">Word・Excelなどの初期設定</label>
+      <label><input type="checkbox" name="pc_setup" value="プリンターの接続">プリンターの接続</label>
+      <label><input type="checkbox" name="pc_setup" value="スマホとの連携（写真の取り込みなど）">スマホとの連携（写真の取り込みなど）</label>
+      <label><input type="checkbox" name="pc_setup" value="文字を見やすく・使いやすく調整">文字を大きく・見やすく調整</label>
+      <label><input type="checkbox" name="pc_setup" value="ウイルス対策・セキュリティ">ウイルス対策・セキュリティ</label>
+      <label><input type="checkbox" name="pc_setup" value="古いパソコンからのデータ移行">古いパソコンからのデータ移行</label>
+    </div>
+  </div>
+</div>
+
+<!-- AI導入・活用 -->
+<div class="section">
+  <div class="sec-title">🤖 AIの活用・導入について<span class="optional-tag">該当する方だけ</span></div>
+  <div class="sec-note">AIを使ってみたい・仕事を楽にしたい方はこちら</div>
+
+  <div class="field">
+    <label>AIを使ったことはありますか？</label>
+    <div class="choices">
+      <label><input type="radio" name="ai_exp" value="全くない・初めて">全くない・初めて</label>
+      <label><input type="radio" name="ai_exp" value="少しだけ触ったことがある">少しだけ触ったことがある</label>
+      <label><input type="radio" name="ai_exp" value="たまに使っている">たまに使っている</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>毎日の作業で「時間がかかって大変」なことは？</label>
+    <textarea id="ai_pain" placeholder="例：お客様への文章を考えるのに時間がかかる。書類作成が苦手。同じような事務作業を毎回手で入力している。"></textarea>
+  </div>
+
+  <div class="field">
+    <label>AIで楽にしたいこと（複数選択OK）</label>
+    <div class="choices">
+      <label><input type="checkbox" name="ai_want" value="文章を書く（投稿・案内文など）">文章を書く（投稿・案内文など）</label>
+      <label><input type="checkbox" name="ai_want" value="メール・返信の作成">メール・返信の作成</label>
+      <label><input type="checkbox" name="ai_want" value="資料・書類づくり">資料・書類づくり</label>
+      <label><input type="checkbox" name="ai_want" value="調べ物・情報収集">調べ物・情報収集</label>
+      <label><input type="checkbox" name="ai_want" value="画像・チラシづくり">画像・チラシづくり</label>
+      <label><input type="checkbox" name="ai_want" value="事務作業の自動化">事務作業の自動化</label>
+      <label><input type="checkbox" name="ai_want" value="まずは使い方を教えてほしい">まずは使い方を教えてほしい</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>主に誰が使いますか？</label>
+    <div class="choices">
+      <label><input type="radio" name="ai_who" value="自分だけ">自分だけ</label>
+      <label><input type="radio" name="ai_who" value="家族">家族</label>
+      <label><input type="radio" name="ai_who" value="職場のスタッフ">職場のスタッフ</label>
+    </div>
+  </div>
+</div>
+
+<!-- 希望・その他 -->
+<div class="section">
+  <div class="sec-title">📅 ご希望・その他</div>
+
+  <div class="field">
+    <label>いつ頃やりたいですか？</label>
+    <select id="when">
+      <option value="">選んでください</option>
+      <option value="できるだけ早く">できるだけ早く</option>
+      <option value="今月中">今月中</option>
+      <option value="相談しながら決めたい">相談しながら決めたい</option>
+      <option value="急いでいない">急いでいない</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>ご予算の希望があれば（任意）</label>
+    <input type="text" id="budget" placeholder="例：1万円くらいまで、相談したい">
+  </div>
+
+  <div class="field">
+    <label>その他、伝えておきたいこと・不安なこと</label>
+    <textarea id="other" placeholder="「機械が本当に苦手」「以前に失敗した経験がある」など、何でもどうぞ"></textarea>
+  </div>
+</div>
+
+<button class="copy-btn" onclick="copyAll()">📋 まとめてコピーしてLINEで送る</button>
+<div class="copied" id="copied">✅ コピーしました！LINEを開いて、トーク画面で長押し→「貼り付け」して送ってください😊</div>
+<div class="spacer"></div>
+
+<script>
+function v(id){return(document.getElementById(id)?.value||'').trim()||'未記入'}
+function r(name){const e=document.querySelector(`input[name="${name}"]:checked`);return e?e.value:'未回答'}
+function c(name){const es=document.querySelectorAll(`input[name="${name}"]:checked`);return es.length?Array.from(es).map(e=>e.value).join('・'):'未選択'}
+
+function copyAll(){
+const t=`📋 あいまに ヒアリングシート（総合相談）
+━━━━━━━━━━━━━━
+
+【あなたについて】
+お名前：${v('name')}
+立場：${r('role')}
+エリア：${v('area')}
+連絡しやすい方法：${c('contact')}
+パソコン・スマホの得意度：${r('level')}
+
+━━━━━━━━━━━━━━
+
+【相談したいこと】
+カテゴリ：${c('topic')}
+
+今困っていること・やりたいこと：
+${v('trouble')}
+
+━━━━━━━━━━━━━━
+
+【パソコン購入・初期設定】
+今の状況：${r('pc_status')}
+主な用途：${c('pc_use')}
+予算：${v('pc_budget')}
+購入サポート：${r('pc_buy')}
+やってほしい初期設定：${c('pc_setup')}
+
+━━━━━━━━━━━━━━
+
+【AIの活用・導入】
+AI経験：${r('ai_exp')}
+時間がかかって大変なこと：
+${v('ai_pain')}
+AIで楽にしたいこと：${c('ai_want')}
+使う人：${r('ai_who')}
+
+━━━━━━━━━━━━━━
+
+【ご希望・その他】
+時期：${v('when')}
+予算希望：${v('budget')}
+その他：
+${v('other')}
+
+━━━━━━━━━━━━━━
+以上です。よろしくお願いします！`;
+
+  navigator.clipboard.writeText(t).then(show).catch(()=>{
+    const ta=document.createElement('textarea');
+    ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.focus();ta.select();
+    document.execCommand('copy');document.body.removeChild(ta);show();
+  });
+}
+function show(){
+  const el=document.getElementById('copied');
+  el.style.display='block';
+  setTimeout(()=>{el.style.display='none'},5000);
+}
+</script>
+</body>
+</html>
