@@ -226,6 +226,16 @@ input[type=radio],input[type=checkbox]{width:18px;height:18px;accent-color:#2c4a
       <label><input type="radio" name="ai_material" value="ない（ゼロから作りたい）">ない（ゼロから作りたい）</label>
     </div>
   </div>
+
+  <div class="field">
+    <label>AIの有料プランに課金することはできますか？</label>
+    <div class="hint">※ 無料か有料かで使えるAIの機能・おすすめのツールが変わります。月額約3,000円前後が有料プランの目安です</div>
+    <div class="choices">
+      <label><input type="radio" name="ai_paid" value="できる（月額料金を払ってでも便利なら使いたい）">できる（月額料金を払ってでも便利なら使いたい）</label>
+      <label><input type="radio" name="ai_paid" value="できれば無料で使いたい">できれば無料で使いたい</label>
+      <label><input type="radio" name="ai_paid" value="まだ分からない・相談したい">まだ分からない・相談したい</label>
+    </div>
+  </div>
 </div>
 
 <!-- 希望・その他 -->
@@ -300,6 +310,7 @@ ${v('ai_pain')}
 AIで楽にしたいこと：${c('ai_want')}
 使う人：${r('ai_who')}
 元になる資料・データ：${r('ai_material')}
+AIへの課金：${r('ai_paid')}
 
 ━━━━━━━━━━━━━━
 
