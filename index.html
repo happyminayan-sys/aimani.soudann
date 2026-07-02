@@ -62,6 +62,26 @@ input[type=radio],input[type=checkbox]{width:18px;height:18px;accent-color:#2c4a
   </div>
 
   <div class="field">
+    <label>職業・お仕事</label>
+    <div class="choices">
+      <label><input type="radio" name="job" value="会社員・公務員">会社員・公務員</label>
+      <label><input type="radio" name="job" value="医療・介護・福祉職">医療・介護・福祉職（看護師・介護士・ケアマネなど）</label>
+      <label><input type="radio" name="job" value="個人事業主・フリーランス">個人事業主・フリーランス（お店・仕事が本業）</label>
+      <label><input type="radio" name="job" value="パート・アルバイト">パート・アルバイト</label>
+      <label><input type="radio" name="job" value="主婦・主夫">主婦・主夫</label>
+      <label><input type="radio" name="job" value="退職・無職">退職・無職</label>
+      <label><input type="radio" name="job" value="学生">学生</label>
+      <label><input type="radio" name="job" value="その他">その他</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>具体的な職種・お仕事の内容（任意）</label>
+    <input type="text" id="job_detail" placeholder="例：看護師（病院）、介護士（特別養護老人ホーム）、美容師、営業職、元教員 など">
+    <div class="hint">職種がわかると、より的確なサポートができます。書ける範囲で教えてください</div>
+  </div>
+
+  <div class="field">
     <label>お住まい・エリア</label>
     <input type="text" id="area" placeholder="例：三重県津市、四日市市あたり">
   </div>
@@ -73,6 +93,22 @@ input[type=radio],input[type=checkbox]{width:18px;height:18px;accent-color:#2c4a
       <label><input type="checkbox" name="contact" value="電話">電話</label>
       <label><input type="checkbox" name="contact" value="メール">メール</label>
       <label><input type="checkbox" name="contact" value="InstagramのDM">InstagramのDM</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>あいまにへの連絡先（LINE IDまたは電話番号）<span class="req">*</span></label>
+    <input type="text" id="contact_id" placeholder="例：LINE ID: sato_minako　/ 090-XXXX-XXXX">
+    <div class="hint">LINEのIDは「プロフィール→その他→ID」から確認できます</div>
+  </div>
+
+  <div class="field">
+    <label>お使いのスマホ</label>
+    <div class="choices">
+      <label><input type="radio" name="smartphone" value="iPhone（iOS）">iPhone（iOS）</label>
+      <label><input type="radio" name="smartphone" value="Android">Android</label>
+      <label><input type="radio" name="smartphone" value="両方持っている">両方持っている</label>
+      <label><input type="radio" name="smartphone" value="スマホは使っていない">スマホは使っていない</label>
     </div>
   </div>
 
@@ -280,8 +316,12 @@ const t=`📋 あいまに ヒアリングシート（総合相談）
 【あなたについて】
 お名前：${v('name')}
 立場：${r('role')}
+職業：${r('job')}
+職種・仕事内容：${v('job_detail')}
 エリア：${v('area')}
 連絡しやすい方法：${c('contact')}
+あいまにへの連絡先：${v('contact_id')}
+スマホの種類：${r('smartphone')}
 パソコン・スマホの得意度：${r('level')}
 
 ━━━━━━━━━━━━━━
