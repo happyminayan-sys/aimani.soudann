@@ -38,7 +38,7 @@ input[type=radio],input[type=checkbox]{width:18px;height:18px;accent-color:#2c4a
   <h1>【あいまに】ヒアリングシート<br><span style="font-size:14px;font-weight:normal;opacity:.9">総合相談（パソコン・スマホ・AI・デジタルのお困りごと）</span></h1>
   <p>「何を頼めるかわからない」でも大丈夫。困っていることを教えてください😊<br>
   当てはまる欄だけでOK。わからない欄は空欄のままで構いません。<br>
-  最後の「まとめてコピー」ボタンを押してLINEに貼り付けて送ってください。</p>
+  最後の「まとめてコピー」ボタンを押して、LINEまたはメールの返信に貼り付けて送ってください。</p>
 </div>
 
 <!-- 基本情報 -->
@@ -97,9 +97,9 @@ input[type=radio],input[type=checkbox]{width:18px;height:18px;accent-color:#2c4a
   </div>
 
   <div class="field">
-    <label>あいまにへの連絡先（LINE IDまたは電話番号）<span class="req">*</span></label>
-    <input type="text" id="contact_id" placeholder="例：LINE ID: sato_minako　/ 090-XXXX-XXXX">
-    <div class="hint">LINEのIDは「プロフィール→その他→ID」から確認できます</div>
+    <label>あいまにへの連絡先（LINE ID・メールアドレス・電話番号のいずれか）<span class="req">*</span></label>
+    <input type="text" id="contact_id" placeholder="例：LINE ID: sato_minako　/ mail@example.com　/ 090-XXXX-XXXX">
+    <div class="hint">LINEのIDは「プロフィール→その他→ID」から確認できます。メールでやり取り中の方はそのメールアドレスでOKです</div>
   </div>
 
   <div class="field">
@@ -300,8 +300,8 @@ input[type=radio],input[type=checkbox]{width:18px;height:18px;accent-color:#2c4a
   </div>
 </div>
 
-<button class="copy-btn" onclick="copyAll()">📋 まとめてコピーしてLINEで送る</button>
-<div class="copied" id="copied">✅ コピーしました！LINEを開いて、トーク画面で長押し→「貼り付け」して送ってください😊</div>
+<button class="copy-btn" onclick="copyAll()">📋 まとめてコピーする（LINE・メールどちらでも送れます）</button>
+<div class="copied" id="copied">✅ コピーしました！LINEのトーク画面またはメールの返信に「貼り付け」して送ってください😊</div>
 <div class="spacer"></div>
 
 <script>
